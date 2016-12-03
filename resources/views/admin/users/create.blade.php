@@ -11,25 +11,22 @@
 
     <div class="form-group">
 
-         {!! Form::label('title','Name')!!}
-            {!! Form::text('name',null,['class'=>'form-control']) !!}
+            {!! Form::text('name',null,['placeholder' => 'User full name','class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-     {!! Form::label('title','Email')!!}
-            {!! Form::text('email',null,['class'=>'form-control']) !!}
+
+         {!! Form::text('email',null,['placeholder' => 'Valid email address','class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-         {!! Form::label('password','Password')!!}
-            {!! Form::password('password',['class'=>'form-control']) !!}
+
+            {!! Form::password('password',['placeholder' => 'User password','class'=>'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('role_id','Role')!!}
         {!! Form::select('role_id',$roles, null, ['placeholder' => 'Please select User Role...','class'=>'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('status','Status')!!}
         {!! Form::select('status',array(1=>'Active',0=>'Non-active'), 0, ['placeholder' => 'Please select User Status ...','class'=>'form-control']) !!}
     </div>
 

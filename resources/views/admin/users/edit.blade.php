@@ -2,15 +2,19 @@
 
 @section('content')
     <h1>Edit User</h1>
+    {!! Form::model($user,['method'=>'Patch','action'=>['AdminUsersController@update',$user->id],'files'=>true]) !!}
     <div class="col-sm-3">
 
         <img src="{{$user->photo ? $user->photo->file:'http://placehold.it/400x400'}}" alt="No image" class="img-responsive img-rounded">
+        <div class="form-group">
+            {!! Form::label('photo_id','Photo')!!}
+            {!! Form::file('photo_id',null,['class'=>'btn btn-primary']) !!}</div>
     </div>
     <div class="col-sm-9">
         @include('includes.create_user_form_errors')
 
         {{--<form method="post" action="/post">--}}
-        {!! Form::model($user,['method'=>'Patch','action'=>['AdminUsersController@update',$user->id],'files'=>true]) !!}
+
 
 
         <div class="form-group">
@@ -38,9 +42,6 @@
         </div>
 
 
-        <div class="form-group">
-            {!! Form::label('photo_id','Photo')!!}
-            {!! Form::file('photo_id',null,['class'=>'btn btn-primary']) !!}</div>
         <div class="form-group">
             {!! Form::submit('Edit user',['class'=>'btn btn-primary col-sm-6']) !!}</div>
 

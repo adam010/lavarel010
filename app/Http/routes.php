@@ -17,13 +17,13 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::group(['middleware' => 'admin','auth','web'], function () {
+Route::group(['middleware' => 'auth','web'], function () {
     Route::get('/home', 'HomeController@index');
-
+    Route::resource('admin/users','AdminUsersController');
+    Route::resource('admin/posts','AdminPostsController');
 
 });
 
 Route::get('/admin',function(){
     return view('admin.index');
 });
-Route::resource('admin/users','AdminUsersController');

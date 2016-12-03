@@ -23,7 +23,7 @@
                     <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->role}}</td>
-                    <td>{{$user->status==true ? 'Yes': 'No' }}</td>
+                    <td >{{$user->status==true ? 'Yes' : 'No' }}</td>
                     <td>{{$user->created_at->diffForHumans()}}</td>
                     <td>{{$user->updated_at->diffForHumans()}}</td>
                 </tr>
