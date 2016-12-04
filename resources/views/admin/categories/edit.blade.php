@@ -6,10 +6,10 @@
 
 
     {{--<form method="post" action="/post">--}}
-    {!! Form::model($category,['method'=>'Patch','action'=>'AdminCategoriesController@update',$category->id]) !!}
+    {!! Form::model($category,['method'=>'Patch','action'=>['AdminCategoriesController@update',$category->id]]) !!}
 
     <div class="form-group">
-        {!! Form::text('category_id',null,['class'=>'form-control','readonly'=>'readonly']) !!}
+        {!! Form::text('id',null,['class'=>'form-control', 'readonly'=>'readonly']) !!}
     </div>
 
     <div class="form-group">
@@ -17,11 +17,18 @@
     </div>
 
     <div class="form-group">
-        {!!  Form::submit('Edit category',['class'=>'btn btn-primary']) !!}
+        {!!  Form::submit('Edit category',['class'=>'btn btn-primary col-sm-6']) !!}
     </div>
     {!! Form::close() !!}
 
+    {!! Form::close() !!}
+    <div class="form-group">
+        {!! Form::open(['method'=>'DELETE','action'=>['AdminCategoriesController@destroy',$category->id]]) !!}
 
+        {!! Form::submit('DELETE this category',['class'=>'btn btn-danger col-sm-6']) !!}
+
+        {!! Form::close() !!}
+    </div>
 
 
 @endsection

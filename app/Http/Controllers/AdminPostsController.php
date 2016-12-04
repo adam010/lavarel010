@@ -103,6 +103,7 @@ class AdminPostsController extends Controller
         $post=Post::findOrFail($id);
 
         $input = $request->all();
+        return $input;
         $post->update($input);
 
         return redirect('admin/posts');
