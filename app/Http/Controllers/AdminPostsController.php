@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\PostsRequest;
+use App\Http\Requests\PostsUpdateRequest;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -48,9 +50,15 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostsRequest $request)
     {
-        //
+        //return $request->all();
+        $category=$request->Category_id;
+        $input=$request->all();
+        Post::create($input);
+        
+
+        return redirect('admin/posts');
     }
 
     /**
@@ -90,9 +98,14 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostsUpdateRequest $request, $id)
     {
-        //
+        $post=Post::findOrFail($id);
+
+        $input = $request->all();
+        $post->update($input);
+
+        return redirect('admin/posts');
     }
 
     /**
@@ -104,8 +117,8 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         $post =Post::findOrFail($id)->delete($id);
-        
-        
+
+        session()->flash('Postdeleted', 'Post succesfully deleted!');
         return redirect('admin/posts');
 
     }

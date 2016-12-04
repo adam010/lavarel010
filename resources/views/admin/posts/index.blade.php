@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 
-)
 @section('content')
     @if(Session::has('Postdeleted'))
         <p class="bg-info">{{session('Postdeleted')}}</p>
