@@ -4,7 +4,6 @@
 
     <h1>Edit Post</h1>
 
-
     {!! Form::model($post,['method'=>'Patch','action'=>['AdminPostsController@update',$post->id],'files'=>true]) !!}
     {!! Form::hidden('user_id',$post->user->id,['class'=>'form-control']) !!}
     <div class="form-group">

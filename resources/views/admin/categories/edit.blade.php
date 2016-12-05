@@ -4,7 +4,6 @@
 
     <h1>Edit Category</h1>
 
-
     {{--<form method="post" action="/post">--}}
     {!! Form::model($category,['method'=>'Patch','action'=>['AdminCategoriesController@update',$category->id]]) !!}
 

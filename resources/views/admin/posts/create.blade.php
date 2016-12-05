@@ -7,7 +7,6 @@
     @endif
     <h1>Create Post</h1>
 
-
     {{--<form method="post" action="/post">--}}
     {!! Form::open(['method'=>'Post','action'=>'AdminPostsController@store','files'=>true]) !!}
     {!! Form::hidden('user_id',Auth::user()->id,['class'=>'form-control']) !!}

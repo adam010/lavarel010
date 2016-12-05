@@ -4,7 +4,6 @@
 
     <h1>Create Category</h1>
 
-
     {{--<form method="post" action="/post">--}}
     {!! Form::open(['method'=>'Post','action'=>'AdminCategoriesController@store']) !!}
 

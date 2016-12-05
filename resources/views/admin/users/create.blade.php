@@ -3,8 +3,6 @@
 @section('content')
     <h1>Create User</h1>
 
-    @include('includes.create_user_form_errors')
-
     {{--<form method="post" action="/post">--}}
     {!! Form::open(['method'=>'Post','action'=>'AdminUsersController@store','files'=>true]) !!}
 

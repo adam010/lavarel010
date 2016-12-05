@@ -24,7 +24,10 @@ class PostsRequest extends Request
     public function rules()
     {
         return [
-            //
+            'user_id'=>'required',
+            'title'=>'required',
+            'content'=>'required',
+            'category_id'=>'required',
         ];
     }
 }

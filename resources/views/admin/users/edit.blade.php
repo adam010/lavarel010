@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>Edit User</h1>
+
     {!! Form::model($user,['method'=>'Patch','action'=>['AdminUsersController@update',$user->id],'files'=>true]) !!}
     <div class="col-sm-3">
 
@@ -11,7 +12,7 @@
             {!! Form::file('photo_id',null,['class'=>'btn btn-primary']) !!}</div>
     </div>
     <div class="col-sm-9">
-        @include('includes.create_user_form_errors')
+
 
         {{--<form method="post" action="/post">--}}
 
