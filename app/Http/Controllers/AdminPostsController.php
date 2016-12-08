@@ -21,7 +21,6 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
-
         $posts = Post::all();
         return view('admin.posts.index',compact('posts'));
     }
@@ -33,14 +32,8 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        //
-       // return Auth::user();
-        $user= '';
-        $categories= Category::lists('name', 'id');
-        /*if(Auth::check()) {
-            $user= Auth::user()->id;
 
-        }*/
+        $categories= Category::lists('name', 'id');
         return view('admin.posts.create',compact('categories'));
     }
 
@@ -53,10 +46,11 @@ class AdminPostsController extends Controller
     public function store(PostsRequest $request)
     {
         //return $request->all();
-        $category=$request->Category_id;
+        $user=Auth::user();
+        //$category=$request->Category_id;
         $input=$request->all();
-        Post::create($input);
-        
+
+        $user->post()->create($input);
 
         return redirect('admin/posts');
     }
@@ -103,7 +97,6 @@ class AdminPostsController extends Controller
         $post=Post::findOrFail($id);
 
         $input = $request->all();
-        return $input;
         $post->update($input);
 
         return redirect('admin/posts');

@@ -9,7 +9,7 @@
 
     {{--<form method="post" action="/post">--}}
     {!! Form::open(['method'=>'Post','action'=>'AdminPostsController@store','files'=>true]) !!}
-    {!! Form::hidden('user_id',Auth::user()->id,['class'=>'form-control']) !!}
+    {{--!! Form::hidden('user_id',Auth::user()->id,['class'=>'form-control']) !!--}}
     <div class="form-group">
         {!! Form::select('category_id',$categories, null, ['placeholder' => 'Please select Post category ...','class'=>'form-control']) !!}
     </div>
