@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>Edit Category</h1>
-
+<div class="col-sm-6">
     {{--<form method="post" action="/post">--}}
     {!! Form::model($category,['method'=>'Patch','action'=>['AdminCategoriesController@update',$category->id]]) !!}
 
@@ -29,5 +29,5 @@
         {!! Form::close() !!}
     </div>
 
-
+</div>
 @endsection

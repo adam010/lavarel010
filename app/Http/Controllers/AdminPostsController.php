@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests\PostsRequest;
 use App\Http\Requests\PostsUpdateRequest;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -50,7 +51,7 @@ class AdminPostsController extends Controller
         //$category=$request->Category_id;
         $input=$request->all();
 
-        $user->post()->create($input);
+        $user->posts()->create($input);
 
         return redirect('admin/posts');
     }
@@ -76,7 +77,9 @@ class AdminPostsController extends Controller
     {
         //
         $post=Post::findOrFail($id);
-        $user= '';
+        $user='';
+            //$post->user->id;;
+
         $categories= Category::lists('name', 'id');
         if(Auth::check()) {
             $user= Auth::user()->id;
@@ -94,10 +97,11 @@ class AdminPostsController extends Controller
      */
     public function update(PostsUpdateRequest $request, $id)
     {
-        $post=Post::findOrFail($id);
-
+       $user=User::findOrFail($request->user_id);
+        //$user=
         $input = $request->all();
-        $post->update($input);
+        $user->posts()->whereId($id)->first()->update($input);
+      //  $post->update($input);
 
         return redirect('admin/posts');
     }
@@ -115,5 +119,9 @@ class AdminPostsController extends Controller
         session()->flash('Postdeleted', 'Post succesfully deleted!');
         return redirect('admin/posts');
 
+    }
+    public function post($id){
+
+        return view('post');
     }
 }
