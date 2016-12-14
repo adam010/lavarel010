@@ -17,6 +17,7 @@
         <th>Title</th>
         <th>Created</th>
         <th>Updated</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -29,7 +30,8 @@
                 <td>{{$post->category->name}}</td>
                 <td width="200px"><a href={{route('admin.posts.edit',$post->id)}}>{{$post->title}}</a></td>
                 <td>{{$post->created_at->diffForhumans()}}</td>
-                <td>{{$post->updated_at->diffForhumans()}}</td>
+                <td><a href="{{route('home.post',$post->id)}}">View post</a></td>
+                <td><a href="{{route('post.comments',$post->id)}}">View comments</a></td>
             </tr>
 
         @endforeach
