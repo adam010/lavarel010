@@ -8,6 +8,8 @@ use App\CommentReply;
 use App\Http\Requests;
 use App\Post;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class HomeController extends Controller
 {
@@ -16,6 +18,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         //$this->middleware('auth');
@@ -30,18 +33,17 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function post($id){
-        $post =Post::findOrFail($id);
+    public function post($slug){
+        $post =$post = Post::where('slug', $slug)->firstOrFail();
+        $comments = $post->comments()->whereStatus(1)->get();
         $categories= Category::all();
-        $coms = $post->comments()->whereStatus(1)->get();
-            //Post::find($id)->comments->whereStatus(1)->get();
-        $comments=[];
-        foreach ($coms as $comment){
+            
 
-            $replies=Comment::find($comment->id)->replies;
-            $comment['replies']=$replies;
+       /* foreach ($coms as $comment){          
+        
+            $comment['replies']=$comment->replies()->whereStatus(1)->get();;
             $comments[]=$comment;
-        }
+        }*/
       
         return view('post',compact('post','comments','categories'));
     }

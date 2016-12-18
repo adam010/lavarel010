@@ -13,7 +13,7 @@
     </style>
 
     @if(count($replies)>0)
-        <h1>Comment-replies (<span style="font:12px">{{count($replies)}}</span>)</h1>
+        <h1>Comments (<span style="font:12px">{{count($replies)}}</span>)</h1>
         <table class="table table-inverse">
             <thead>
             <tr>
@@ -42,9 +42,9 @@
                     <td>{{$reply->author}}</td>
                     <td>{{$reply->email}}</td>
                     <td>{{$reply->created_at->diffForhumans()}}</td>
-
+                    <td><a href="{{route('home.post',$reply->id)}}">View replies</a> </td>
                     <td>
-                        {!! Form::open(['method'=>'PATCH','action'=>['CommentsRepliesController@update',$reply->id]]) !!}
+                        {!! Form::open(['method'=>'PATCH','action'=>['PostCommentsController@update',$reply->id]]) !!}
                         @if($reply->status==1)
                             {!! Form::hidden('status',0,[]) !!}
                             {!!  Form::submit('Un-Approve',['class'=>'btn btn-info','title'=>'Pending approval']) !!}
@@ -59,7 +59,7 @@
                     </td>
                     <td>
 
-                        {!! Form::open(['method'=>'DELETE','action'=>['CommentsRepliesController@destroy',$reply->id]]) !!}
+                        {!! Form::open(['method'=>'DELETE','action'=>['PostCommentsController@destroy',$reply->id]]) !!}
 
                         {!!  Form::submit('Delete',['class'=>'btn btn-danger']) !!}
 

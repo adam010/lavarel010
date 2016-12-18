@@ -8,7 +8,7 @@
         <div class="form-group">
             <p>{!! Form::textarea('content',null,['placeholder' => 'Write your comments here ...','cols'=>'100','rows'=>'3']) !!}</p>
         </div>
-        {!!  Form::submit('Submit',['class'=>'btn btn-primary']) !!}
+        {!!  Form::submit('Submit comment',['class'=>'btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
 

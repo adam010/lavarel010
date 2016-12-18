@@ -27,6 +27,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -41,7 +42,7 @@
                         <td>{{$comment->author}}</td>
                         <td>{{$comment->email}}</td>
                         <td>{{$comment->created_at->diffForhumans()}}</td>
-                        <td><a href="{{route('home.post',$comment->post_id)}}">View post</a> </td>
+                        <td><a href="{{route('comments.replies',$comment->id)}}">View replies</a> </td>
                         <td>
                             {!! Form::open(['method'=>'PATCH','action'=>['PostCommentsController@update',$comment->id]]) !!}
                             @if($comment->status==1)

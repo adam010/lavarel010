@@ -47,7 +47,6 @@ class PostCommentsController extends Controller
     {
         $user=Auth::user();
         $data=[
-
             'post_id'=>$request->post_id,
             'author'=>$user->name,
              'email'=>$user->email,

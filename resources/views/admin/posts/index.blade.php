@@ -30,7 +30,7 @@
                 <td>{{$post->category->name}}</td>
                 <td width="200px"><a href={{route('admin.posts.edit',$post->id)}}>{{$post->title}}</a></td>
                 <td>{{$post->created_at->diffForhumans()}}</td>
-                <td><a href="{{route('home.post',$post->id)}}">View post</a></td>
+                <td><a href="{{route('home.post',$post->slug)}}">View post</a></td>
                 <td><a href="{{route('post.comments',$post->id)}}">View comments</a></td>
             </tr>
 
@@ -38,4 +38,10 @@
     @endif
     </tbody>
 </table>
+    <div class="row">
+        <div class="col-sm-6 col-sm-ofsset-5">
+            {{$posts->render()}}
+        </div>
+
+    </div>
 @endsection
